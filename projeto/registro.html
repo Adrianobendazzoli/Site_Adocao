@@ -1,0 +1,140 @@
+<!--
+AUTO-COMMENTED FILE
+Original path: site-adocao1/projeto/registro.html
+Summary (auto-generated):
+includes other PHP files (layout or helpers); contains HTML form(s); styling (CSS) present; Contains JavaScript (DOM interactions)
+
+Notes:
+- This header was generated automatically to give a quick overview of the file.
+- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
+- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Usuário</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url('img-site/fundo.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-gray-50 text-gray-900 px-4">
+  <section class="w-full max-w-md">
+    <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+
+      <h1 class="text-2xl font-bold text-center mb-6">Criar conta</h1>
+
+      <form id="formCadastro" class="space-y-4">
+
+        <div>
+          <label class="block text-gray-700 mb-1">Nome</label>
+          <input name="nome" type="text" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+        </div>
+
+        <div>
+          <label class="block text-gray-700 mb-1">E-mail</label>
+          <input name="email" type="email" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-1">Senha</label>
+            <input name="senha" id="senha" type="password" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1">Confirmar</label>
+            <input id="confirmar" type="password" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-1">Data de nascimento</label>
+            <input name="data" type="date" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1">CPF</label>
+            <input name="cpf" type="text" maxlength="14" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 mb-1">Telefone</label>
+            <input name="telefone" type="text" maxlength="15" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 mb-1">CEP</label>
+            <input name="cep" type="text" maxlength="9" required class="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-violet-500">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-2 text-white bg-violet-600 rounded-lg hover:bg-violet-700 transition">
+          Criar conta
+        </button>
+
+        <p id="resposta" class="text-sm text-center mt-2"></p>
+      </form>
+    </div>
+  </section>
+
+<script>
+const form = document.getElementById('formCadastro');
+const btn = form.querySelector('button[type="submit"]');
+const msg = document.getElementById('resposta');
+
+form.addEventListener('submit', async(e) => {
+  e.preventDefault();
+
+  const senha = form.querySelector('#senha').value;
+  const confirmar = form.querySelector('#confirmar').value;
+
+  if (senha !== confirmar) {
+    msg.textContent = 'As senhas não conferem';
+    msg.className = "text-red-500 text-center";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Aguarde...';
+  msg.textContent = '';
+
+  const fd = new FormData(form);
+
+  try {
+    const resp = await fetch('processa_registro.php', {
+      method: 'POST',
+      body: fd,
+      credentials: 'same-origin'
+    });
+
+    const json = await resp.json();
+
+    if (json.success) {
+      msg.textContent = json.message || 'Cadastro realizado com sucesso!';
+      msg.className = "text-green-500 text-center";
+
+      setTimeout(() => {
+        window.location.href = json.redirect || 'home.php';
+      }, 1000);
+    } else {
+      msg.textContent = json.message || 'Erro ao cadastrar';
+      msg.className = "text-red-500 text-center";
+    }
+  } catch (err) {
+    msg.textContent = 'Erro de rede';
+    msg.className = "text-red-500 text-center";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Criar conta';
+  }
+});
+</script>
+</body>
+</html>
