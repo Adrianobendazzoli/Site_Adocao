@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/salvar_edicao_usuario.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs INSERT/UPDATE/DELETE (writes data); includes other PHP files (layout or helpers)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php';
 
@@ -49,8 +36,6 @@ try {
 
     header("Location: usuarios_admin.php?ok=1");
     exit;
-
 } catch (PDOException $e) {
     die("Erro ao atualizar usuário: " . $e->getMessage());
 }
-?>

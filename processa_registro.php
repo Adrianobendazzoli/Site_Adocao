@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/processa_registro.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); performs INSERT/UPDATE/DELETE (writes data); includes other PHP files (layout or helpers)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 header('Access-Control-Allow-Origin: http://localhost:5173');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
@@ -83,8 +70,6 @@ try {
         'message' => 'Cadastro realizado com sucesso!',
         'redirect' => 'home.php'
     ]);
-
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => 'Erro ao acessar o banco: ' . $e->getMessage()]);
 }
-?>

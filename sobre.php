@@ -1,16 +1,3 @@
-<?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/sobre.php
-Summary (auto-generated):
-styling (CSS) present
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -159,8 +146,6 @@ Notes:
             color: #6a1b9a;
             margin: 0;
         }
-
-    
     </style>
 </head>
 

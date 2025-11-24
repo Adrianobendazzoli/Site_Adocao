@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/index.php
-Summary (auto-generated):
-PHP file; uses PDO for database access; performs SELECT queries (reads data); includes other PHP files (layout or helpers); fetches DB results into arrays; contains modal/iframe UI logic; styling (CSS) present; Contains JavaScript (DOM interactions)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 require 'conexao.php';
 
 try {
@@ -109,7 +96,7 @@ try {
                     Divulgue pets<br />para adoção
                 </h1>
 
-                <p class="text-slate-600 mb-6 max-w-xl">
+                <p class="text-slate-600 mb-6 max-w-xl text-white">
                     Utilize ferramentas de divulgação de pets com eficácia comprovada em todo o Brasil. Crie seu anúncio gratuito agora mesmo para ter acesso ao Painel de Adoção.
                 </p>
 

@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/excluir_pet.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); performs INSERT/UPDATE/DELETE (writes data); includes other PHP files (layout or helpers); fetches DB results into arrays
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php';
 
@@ -24,7 +11,7 @@ if (empty($_SESSION['usuario_cpf'])) {
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 if (!$id) {
     header('Location: home.php?status=invalid_id');
-    exit;   
+    exit;
 }
 
 $usuario_cpf = preg_replace('/\D/', '', $_SESSION['usuario_cpf']);
@@ -86,11 +73,9 @@ try {
 
     header('Location: home.php?status=deleted');
     exit;
-
 } catch (Exception $e) {
     if ($pdo->inTransaction()) $pdo->rollBack();
     error_log('excluir_pet.php error: ' . $e->getMessage());
     header('Location: home.php?status=error');
     exit;
 }
-?>

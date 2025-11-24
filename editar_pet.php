@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/editar_pet.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); includes other PHP files (layout or helpers); contains HTML form(s); fetches DB results into arrays
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php';
 
@@ -58,7 +45,6 @@ try {
     if ($_SESSION['usuario_tipo'] === 'admin') {
         $usuarios = $pdo->query("SELECT cpf, nome FROM usuario ORDER BY nome")->fetchAll(PDO::FETCH_ASSOC);
     }
-
 } catch (PDOException $e) {
     die("Erro: " . $e->getMessage());
 }
@@ -75,7 +61,7 @@ try {
 </head>
 
 <body class="bg-gray-50 text-gray-900">
-   
+
 
     <main class="max-w-3xl mx-auto py-12 px-4">
         <h1 class="text-2xl font-bold mb-6">Editar Pet</h1>
@@ -91,7 +77,7 @@ try {
                     <label class="block text-gray-700 mb-1" for="usuario_cpf">Dono do Pet</label>
                     <select id="usuario_cpf" name="usuario_cpf"
                         class="w-full border px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <?php foreach($usuarios as $u): ?>
+                        <?php foreach ($usuarios as $u): ?>
                             <option value="<?= htmlspecialchars($u['cpf']); ?>"
                                 <?= ($pet['usuario_cpf'] == $u['cpf']) ? 'selected' : ''; ?>>
                                 <?= htmlspecialchars($u['nome']); ?>
@@ -169,4 +155,5 @@ try {
         </form>
     </main>
 </body>
+
 </html>

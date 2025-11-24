@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/perfil.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); includes other PHP files (layout or helpers); fetches DB results into arrays; styling (CSS) present
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 
 // só permite acesso de usuário logado
@@ -43,16 +30,18 @@ try {
     $pets = [];
 }
 
-function formatCpf($cpf) {
+function formatCpf($cpf)
+{
     $c = preg_replace('/\D/', '', $cpf);
     if (strlen($c) === 11) {
-        return substr($c,0,3).'.'.substr($c,3,3).'.'.substr($c,6,3).'-'.substr($c,9,2);
+        return substr($c, 0, 3) . '.' . substr($c, 3, 3) . '.' . substr($c, 6, 3) . '-' . substr($c, 9, 2);
     }
     return $cpf;
 }
 ?>
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -64,6 +53,7 @@ function formatCpf($cpf) {
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800">
     <?php include 'pedaco.php'; ?>
 
@@ -126,11 +116,11 @@ function formatCpf($cpf) {
                 <!-- Botões centralizados dentro do card -->
                 <div class="flex justify-center gap-4 px-4 py-5">
                     <a class="px-6 py-2 min-w-[120px] text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring"
-                       href="editar_perfil.php">
+                        href="editar_perfil.php">
                         Editar Perfil
                     </a>
                     <a class="px-6 py-2 min-w-[120px] text-center text-violet-600 border border-violet-600 rounded hover:bg-violet-600 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring"
-                       href="logout.php">
+                        href="logout.php">
                         Sair
                     </a>
                 </div>
@@ -138,4 +128,5 @@ function formatCpf($cpf) {
         </section>
     <?php endif; ?>
 </body>
+
 </html>

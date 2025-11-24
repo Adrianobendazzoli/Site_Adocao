@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/favoritos.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); includes other PHP files (layout or helpers); fetches DB results into arrays; parses or outputs XML (maybe API or export); related to favorites functionality; contains modal/iframe UI logic; styling (CSS) present; Contains JavaScript (DOM interactions)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php';
 include 'pedaco.php';
@@ -53,18 +40,19 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$usuario_cpf]);
     $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     die("Erro de conexão: " . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <style>
         body {
             padding-top: 5%;
         }
+
         .card_pets {
             padding-bottom: 5%;
         }
@@ -110,9 +98,9 @@ try {
 
         <div class="mt-6 text-center">
             <a href="home.php"
-                   class="px-6 py-2 min-w-[120px] text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring">
-                   Voltar à lista de pets
-                </a>
+                class="px-6 py-2 min-w-[120px] text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring">
+                Voltar à lista de pets
+            </a>
         </div>
     </div>
 
@@ -163,29 +151,32 @@ try {
                 const petId = btn.dataset.petId;
 
                 fetch('favoritar.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `pet_id=${petId}&action=remove`
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        btn.closest('.group').remove();
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `pet_id=${petId}&action=remove`
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            btn.closest('.group').remove();
 
-                        if (document.querySelectorAll('.group').length === 0) {
-                            document.querySelector('.mx-auto').insertAdjacentHTML(
-                                'beforeend',
-                                '<p class="text-center text-gray-700 mt-4">Você ainda não favoritou nenhum pet.</p>'
-                            );
+                            if (document.querySelectorAll('.group').length === 0) {
+                                document.querySelector('.mx-auto').insertAdjacentHTML(
+                                    'beforeend',
+                                    '<p class="text-center text-gray-700 mt-4">Você ainda não favoritou nenhum pet.</p>'
+                                );
+                            }
+                        } else {
+                            alert('Erro ao remover favorito!');
                         }
-                    } else {
-                        alert('Erro ao remover favorito!');
-                    }
-                });
+                    });
             });
         });
     </script>
 
 </body>
 <?php include 'footer.php'; ?>
+
 </html>

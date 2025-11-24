@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/adotar.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); includes other PHP files (layout or helpers); fetches DB results into arrays; Contains JavaScript (DOM interactions)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php'; // deve definir $pdo (PDO)
 
@@ -179,7 +166,10 @@ try {
                 Entrar em contato via WhatsApp
               </a>
               <br>
-              <a href="home.php"
+
+              <!-- BOTÃO VOLTAR QUE FECHA O MODAL -->
+              <a href="#"
+                onclick="window.parent.closeModalFromInside(); return false;"
                 class="mt-6 inline-flex items-center justify-center gap-2 px-8 py-3 
                       bg-gradient-to-r from-violet-600 to-purple-500 
                       text-white text-lg font-semibold 

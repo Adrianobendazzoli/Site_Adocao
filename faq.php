@@ -1,21 +1,9 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/faq.php
-Summary (auto-generated):
-PHP file; includes other PHP files (layout or helpers); parses or outputs XML (maybe API or export); styling (CSS) present; Contains JavaScript (DOM interactions)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 include 'pedaco.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +13,8 @@ include 'pedaco.php';
         body {
             background: url('img-site/fundo.png') no-repeat center center fixed;
         }
-        .faq{
+
+        .faq {
             padding: 10%;
         }
     </style>
@@ -197,5 +186,5 @@ include 'pedaco.php';
 </body>
 <?php include 'footer.php'; ?>
 
-    
+
 </html>

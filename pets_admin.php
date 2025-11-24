@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/pets_admin.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); includes other PHP files (layout or helpers); fetches DB results into arrays
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php';
 
@@ -43,7 +30,6 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
     error_log('admin_pets.php error: ' . $e->getMessage());
     $pets = [];
@@ -51,12 +37,14 @@ try {
 ?>
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Admin - Todos os Pets</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 text-gray-900">
     <?php include 'pedaco.php'; ?>
 
@@ -89,16 +77,16 @@ try {
 
                             <div class="mt-4 flex gap-2 justify-between">
                                 <a href="ver_pet.php?id=<?= urlencode($pet['id']); ?>"
-                                   class="px-3 py-1 min-w-[80px] text-center text-violet-600 border border-violet-600 rounded hover:bg-violet-600 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring text-sm">
+                                    class="px-3 py-1 min-w-[80px] text-center text-violet-600 border border-violet-600 rounded hover:bg-violet-600 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring text-sm">
                                     Ver
                                 </a>
                                 <a href="editar_pet.php?id=<?= urlencode($pet['id']); ?> "
-                                   class="px-3 py-1 min-w-[80px] text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring text-sm">
+                                    class="px-3 py-1 min-w-[80px] text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring text-sm">
                                     Editar
                                 </a>
                                 <a href="excluir_pet.php?id=<?= urlencode($pet['id']); ?>"
-                                   onclick="return confirm('Tem certeza que deseja excluir este pet?');"
-                                   class="px-3 py-1 min-w-[80px] text-center text-white bg-red-600 border border-red-600 rounded active:text-red-500 hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring text-sm">
+                                    onclick="return confirm('Tem certeza que deseja excluir este pet?');"
+                                    class="px-3 py-1 min-w-[80px] text-center text-white bg-red-600 border border-red-600 rounded active:text-red-500 hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring text-sm">
                                     Excluir
                                 </a>
                             </div>
@@ -111,4 +99,5 @@ try {
 
     </main>
 </body>
+
 </html>

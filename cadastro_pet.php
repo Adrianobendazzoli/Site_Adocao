@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/cadastro_pet.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; uses MySQLi or legacy mysql_* functions for DB access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); performs INSERT/UPDATE/DELETE (writes data); includes other PHP files (layout or helpers); contains HTML form(s); fetches DB results into arrays; styling (CSS) present; Contains JavaScript (DOM interactions)
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 
 // Redireciona se não estiver logado

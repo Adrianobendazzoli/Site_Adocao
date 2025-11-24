@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/contato.php
-Summary (auto-generated):
-PHP file; uses session authentication (session_start); uses PDO for database access; perpares and executes SQL statements (parameterized); performs SELECT queries (reads data); performs INSERT/UPDATE/DELETE (writes data); includes other PHP files (layout or helpers); contains HTML form(s); fetches DB results into arrays
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 session_start();
 require 'conexao.php'; // deve definir $pdo (PDO)
 
@@ -34,7 +21,7 @@ try {
         die("Pet não encontrado.");
     }
 } catch (PDOException $e) {
-    error_log('contato.php fetch error: '.$e->getMessage());
+    error_log('contato.php fetch error: ' . $e->getMessage());
     die("Erro ao carregar dados.");
 }
 
@@ -80,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $to = $row['owner_email'];
                 $subject = "Interesse no pet: " . $row['pet_nome'];
                 $body  = "Olá " . ($row['owner_nome'] ?: 'Dono') . ",\n\n";
-                $body .= "Você recebeu uma mensagem sobre o pet \"". $row['pet_nome'] ."\":\n\n";
+                $body .= "Você recebeu uma mensagem sobre o pet \"" . $row['pet_nome'] . "\":\n\n";
                 $body .= "Nome: {$sender_name}\n";
                 $body .= "Email: {$sender_email}\n\n";
                 $body .= "Mensagem:\n{$message_body}\n\n";
@@ -94,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: detalhe_pet.php?id=" . urlencode($pet_id) . "&contato=ok");
             exit;
         } catch (PDOException $e) {
-            error_log('contato.php insert error: '.$e->getMessage());
+            error_log('contato.php insert error: ' . $e->getMessage());
             $status = 'Erro ao enviar a mensagem. Tente novamente mais tarde.';
         }
     }
@@ -102,63 +89,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Contato — <?= htmlspecialchars($row['pet_nome']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50 text-gray-900">
-<main class="max-w-3xl mx-auto py-12 px-4">
-    <div class="bg-white p-6 rounded shadow">
-        <h1 class="text-2xl font-bold mb-2">Entrar em contato</h1>
-        <p class="text-sm text-gray-600 mb-4">Pet: <strong><?= htmlspecialchars($row['pet_nome']) ?></strong></p>
+    <main class="max-w-3xl mx-auto py-12 px-4">
+        <div class="bg-white p-6 rounded shadow">
+            <h1 class="text-2xl font-bold mb-2">Entrar em contato</h1>
+            <p class="text-sm text-gray-600 mb-4">Pet: <strong><?= htmlspecialchars($row['pet_nome']) ?></strong></p>
 
-        <div class="mb-4 text-sm">
-            <p>Dono: <strong><?= htmlspecialchars($row['owner_nome'] ?? '—') ?></strong></p>
-            <?php if (!empty($row['owner_email'])): ?>
-                <p>Email: <?= htmlspecialchars($row['owner_email']) ?></p>
+            <div class="mb-4 text-sm">
+                <p>Dono: <strong><?= htmlspecialchars($row['owner_nome'] ?? '—') ?></strong></p>
+                <?php if (!empty($row['owner_email'])): ?>
+                    <p>Email: <?= htmlspecialchars($row['owner_email']) ?></p>
+                <?php endif; ?>
+                <?php if (!empty($row['owner_tel'])): ?>
+                    <p>Telefone: <?= htmlspecialchars($row['owner_tel']) ?></p>
+                    <p>
+                        <a href="https://wa.me/<?= preg_replace('/\D/', '', $row['owner_tel']) ?>?text=Olá, tenho interesse no pet <?= urlencode($row['pet_nome']) ?>"
+                            target="_blank"
+                            class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                            Entrar em contato via WhatsApp
+                        </a>
+                    </p>
+                <?php endif; ?>
+            </div>
+
+            <?php if ($status): ?>
+                <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded">
+                    <?= htmlspecialchars($status) ?>
+                </div>
             <?php endif; ?>
-            <?php if (!empty($row['owner_tel'])): ?>
-                <p>Telefone: <?= htmlspecialchars($row['owner_tel']) ?></p>
-                <p>
-                    <a href="https://wa.me/<?= preg_replace('/\D/', '', $row['owner_tel']) ?>?text=Olá, tenho interesse no pet <?= urlencode($row['pet_nome']) ?>" 
-                       target="_blank" 
-                       class="inline-block mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                       Entrar em contato via WhatsApp
-                    </a>
-                </p>
-            <?php endif; ?>
+
+            <form method="post" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Seu nome</label>
+                    <input name="name" required class="w-full p-2 border rounded" value="<?= isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?>">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Seu email</label>
+                    <input name="email" type="email" required class="w-full p-2 border rounded" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Mensagem</label>
+                    <textarea name="message" rows="6" required class="w-full p-2 border rounded"><?= isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?></textarea>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <a href="detalhe_pet.php?id=<?= urlencode($pet_id) ?>" class="text-sm text-gray-600 hover:underline">Voltar</a>
+                    <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded">Enviar mensagem</button>
+                </div>
+            </form>
         </div>
-
-        <?php if ($status): ?>
-            <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 text-yellow-800 rounded">
-                <?= htmlspecialchars($status) ?>
-            </div>
-        <?php endif; ?>
-
-        <form method="post" class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium mb-1">Seu nome</label>
-                <input name="name" required class="w-full p-2 border rounded" value="<?= isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?>">
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium mb-1">Seu email</label>
-                <input name="email" type="email" required class="w-full p-2 border rounded" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
-            </div>
-
-            <div>
-                <label class="block text-sm font-medium mb-1">Mensagem</label>
-                <textarea name="message" rows="6" required class="w-full p-2 border rounded"><?= isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '' ?></textarea>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <a href="detalhe_pet.php?id=<?= urlencode($pet_id) ?>" class="text-sm text-gray-600 hover:underline">Voltar</a>
-                <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded">Enviar mensagem</button>
-            </div>
-        </form>
-    </div>
-</main>
+    </main>
 </body>
+
 </html>

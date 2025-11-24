@@ -1,6 +1,15 @@
+<?php
+// Inicia sessão se ainda não foi iniciada
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
+// Verifica se é admin usando a sessão (mais eficiente)
+$isAdmin = !empty($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'admin';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +17,12 @@
   <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    
+
   </style>
 </head>
 
 <body class="bg-gray-50">
-    
+
   <header>
     <nav class="bg-white w-full flex items-center justify-between px-6 py-3 shadow-md fixed top-0 z-50">
       <!-- Logo -->
@@ -42,7 +51,7 @@
         <div class="relative">
           <button type="button" id="profileButton" class="flex items-center px-3 py-2 border rounded-full hover:shadow-lg m-2 md:m-0">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
           </button>
 
@@ -51,6 +60,10 @@
             <a href="perfil.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Meu Perfil</a>
             <a href="pets.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Meus Pets</a>
             <a href="favoritos.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pets Favoritados</a>
+            <?php if ($isAdmin): ?>
+              <hr class="my-1">
+              <a href="usuarios_admin.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-semibold text-violet-600">Administrador</a>
+            <?php endif; ?>
             <a href="logout.php" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sair</a>
           </div>
         </div>
@@ -82,4 +95,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -1,17 +1,4 @@
 <?php
-/*
-AUTO-COMMENTED FILE
-Original path: site-adocao1/projeto/geocode_cep.php
-Summary (auto-generated):
-PHP file
-
-Notes:
-- This header was generated automatically to give a quick overview of the file.
-- Inline, line-by-line commenting was NOT applied automatically to avoid changing behavior.
-- If you want detailed line-by-line comments for specific files, ask and I'll produce them.
-*/
-?>
-<?php
 header('Content-Type: application/json; charset=utf-8');
 
 // valida CEP (apenas números)
@@ -72,4 +59,3 @@ echo json_encode([
     'address' => $viacep
 ]);
 exit;
-?>
