@@ -89,6 +89,7 @@ try {
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Adotar - <?= htmlspecialchars($pet['nome']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
 </head>
 
 <body class="bg-gray-50">
@@ -168,7 +169,7 @@ try {
                             <br>
 
                             <!-- BOTÃO VOLTAR QUE FECHA O MODAL -->
-                            <a href="#"
+                            <a href="home.php"
                                 onclick="window.parent.closeModalFromInside(); return false;"
                                 class="mt-6 inline-flex items-center justify-center gap-2 px-8 py-3 
                       bg-gradient-to-r from-violet-600 to-purple-500 

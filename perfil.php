@@ -47,6 +47,7 @@ function formatCpf($cpf)
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Perfil - <?= htmlspecialchars($user['nome'] ?? $_SESSION['usuario_nome']) ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <style>
         body {
             padding-top: 5%;

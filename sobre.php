@@ -7,6 +7,7 @@
     <title>Sobre</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <style>
         * {
             padding: 0;

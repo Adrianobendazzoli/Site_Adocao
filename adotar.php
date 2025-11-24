@@ -88,6 +88,7 @@ try {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Adotar - <?= htmlspecialchars($pet['nome']) ?></title>
+  <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -168,7 +169,7 @@ try {
               <br>
 
               <!-- BOTÃO VOLTAR QUE FECHA O MODAL -->
-              <a href="#"
+              <a href="localizar_dono.php"
                 onclick="window.parent.closeModalFromInside(); return false;"
                 class="mt-6 inline-flex items-center justify-center gap-2 px-8 py-3 
                       bg-gradient-to-r from-violet-600 to-purple-500 
@@ -184,7 +185,7 @@ try {
               </a>
 
             <?php else: ?>
-              <span class="mt-10 block w-full text-center px-6 py-3 min-w-[120px] text-white bg-gray-400 rounded cursor-not-allowed text-lg font-semibold">
+              <span class="mt-10 block w-full text-center px-6 py-3 min-w-[ 120px] text-white bg-gray-400 rounded cursor-not-allowed text-lg font-semibold">
                 Contato indisponível
               </span>
             <?php endif; ?>

@@ -44,6 +44,7 @@ $pets_json = json_encode($pets, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | J
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
   <style>
     #map {
       height: calc(90vh - 200px);
@@ -142,7 +143,7 @@ $pets_json = json_encode($pets, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | J
               }).addTo(markers);
               const popupContent = `<div class="pet-popup"><strong>${escapeHtml(pt.pet_nome)}</strong><br/>
                                 ${escapeHtml(pt.tipo || '')} ${pt.raca ? '- ' + escapeHtml(pt.raca) : ''}<br/>
-                                <a href="adotar.php?id=${encodeURIComponent(pt.id)}" target="_blank">Ver detalhes</a></div>`;
+                                <a href="adotar.php?id=${encodeURIComponent(pt.id)}">Ver detalhes</a></div>`;
               marker.bindPopup(popupContent);
 
               // guardar para zoom dinamico
@@ -168,7 +169,7 @@ $pets_json = json_encode($pets, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | J
             icon: createIcon(pt.tipo, map.getZoom()),
             opacity: 0.7
           }).addTo(markers);
-          marker.bindPopup(`<strong>${escapeHtml(pt.pet_nome)}</strong><br/>CEP do dono não disponível.<br/><a href="adotar.php?id=${encodeURIComponent(pt.id)}" target="_blank">Ver detalhes</a>`);
+          marker.bindPopup(`<strong>${escapeHtml(pt.pet_nome)}</strong><br/>CEP do dono não disponível.<br/><a href="adotar.php?id=${encodeURIComponent(pt.id)}>Ver detalhes</a>`);
           markerData.push({
             marker,
             tipo: pt.tipo

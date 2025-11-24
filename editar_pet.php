@@ -57,6 +57,7 @@ try {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Editar Pet</title>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 

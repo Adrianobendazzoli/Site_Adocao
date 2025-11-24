@@ -45,7 +45,8 @@ try {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Viu Meu Pet - Landing</title>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
+    <title>Adocão</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 

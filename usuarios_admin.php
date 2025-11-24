@@ -22,6 +22,7 @@ try {
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Todos Usuários - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <style>
         body {
             padding-top: 5%;

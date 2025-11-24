@@ -48,6 +48,7 @@ try {
 <html lang="pt-BR">
 
 <head>
+<link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <style>
         body {
             padding-top: 5%;

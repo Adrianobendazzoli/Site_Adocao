@@ -75,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Pet</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="img-site/logotipo.png" type="image/x-icon">
     <style>
         body {
             background: url('img-site/fundo.png') no-repeat center center fixed;
