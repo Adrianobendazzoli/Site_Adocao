@@ -179,35 +179,35 @@
             <div class="integrantes-lista">
 
                 <div class="membro">
-                    <img src="img-site/dri.jpg" alt="Foto do integrante 1">
+                    <img src="img-site/dri.jpeg" alt="Foto do integrante 1">
                     <h4>Adriano Bendazzoli</h4>
 
                 </div>
 
 
                 <div class="membro">
-                    <img src="img-site/alysson.jpg" alt="Foto do integrante 2">
+                    <img src="img-site/alysson.jpeg" alt="Foto do integrante 2">
                     <h4>Alysson Rocha</h4>
 
                 </div>
 
 
                 <div class="membro">
-                    <img src="img-site/daniel.jpg" alt="Foto do integrante 3">
+                    <img src="img-site/daniel.jpeg" alt="Foto do integrante 3">
                     <h4>Daniel Diogo</h4>
 
                 </div>
 
 
                 <div class="membro">
-                    <img src="img-site/felipe.jpg" alt="Foto do integrante 4">
+                    <img src="img-site/felipe.jpeg" alt="Foto do integrante 4">
                     <h4>Felipe José</h4>
 
                 </div>
 
 
                 <div class="membro">
-                    <img src="img-site/moretti.jpg" alt="Foto do integrante 5">
+                    <img src="img-site/moretti.jpeg" alt="Foto do integrante 5">
                     <h4>Guilherme Moretti</h4>
 
                 </div>
@@ -215,10 +215,12 @@
         </div>
     </section>
     <div class="w-full text-center mt-6">
-        <a href="home.php"
-            class="px-6 py-2 min-w-[120px] text-center bg-white text-violet-600 border border-violet-600 rounded hover:bg-violet-600 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring inline-block">
-            Voltar para a tela inicial
-        </a>
+        <a href="index.php"
+    class="px-6 py-2 min-w-[120px] text-center bg-white text-violet-600 border border-violet-600 rounded hover:bg-violet-600 hover:text-white active:bg-indigo-500 focus:outline-none focus:ring inline-block">
+    Voltar para a tela inicial
+    </a>
+
+        
     </div>
 
 </body>
